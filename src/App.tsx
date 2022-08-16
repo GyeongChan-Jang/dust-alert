@@ -4,13 +4,13 @@ import Card from './components/Card'
 import Favorite from './components/Favorite'
 import Main from './components/Main'
 import NavBar from './components/NavBar'
-import Selector from './components/Selector'
+import SelectBox from './components/SelectBox'
 import TotalSido from './components/TotalSido'
 
 function App() {
   return (
     <div className="App">
-      <Selector />
+      <SelectBox />
       <Card />
       <Routes>
         <Route path="/" element={<Main />} />
