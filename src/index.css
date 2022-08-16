@@ -38,6 +38,9 @@
   src: url('../src//assets/fonts/SCDream9.otf');
 }
 
-html {
+body {
   font-family: 'Dreams-3';
+  /* background-image: url('./assets/bg-sky.jpg');
+  background-repeat: no-repeat;
+  background-size: contain; */
 }

@@ -1,24 +1,24 @@
 import { useState } from 'react'
 import { Routes, Route } from 'react-router-dom'
-import Card from './components/Card'
 import Favorite from './components/Favorite'
-import Main from './components/Main'
+import Home from './components/Home'
+import MyPlace from './components/MyPlace'
 import NavBar from './components/NavBar'
 import SelectBox from './components/SelectBox'
 import TotalSido from './components/TotalSido'
 
 function App() {
+  const [isStarted, setIsStarted] = useState(false)
   return (
-    <div className="App">
-      <SelectBox />
-      <Card />
+    <div className="App relative">
+      {isStarted && <SelectBox />}
       <Routes>
-        <Route path="/" element={<Main />} />
-        <Route path="/myplace" element={<Main />} />
+        <Route path="/" element={<Home setIsStarted={setIsStarted} />} />
+        <Route path="/myplace" element={<MyPlace />} />
         <Route path="/total" element={<TotalSido />} />
         <Route path="/favorite" element={<Favorite />} />
       </Routes>
-      <NavBar />
+      {isStarted && <NavBar />}
     </div>
   )
 }

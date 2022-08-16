@@ -6,8 +6,8 @@ import { Link } from 'react-router-dom'
 
 const NavBar = () => {
   return (
-    <div className="font-dreams5 shadow-lg">
-      <div className="bg-white absolute bottom-0 w-full border-t border-gray-200 flex">
+    <div className="font-dreams5 shadow-lg fixed bottom-0 w-full">
+      <div className="bg-white w-full border-t border-gray-200 flex ">
         <button className="flex flex-grow items-center justify-center p-2 text-gray-500 hover:text-indigo-500">
           <Link to="/myplace">
             <div className="text-center">
