@@ -5,8 +5,6 @@ import Card from './Card'
 
 const MyPlace = () => {
   const myplaceLocation = useLocation()
-  const { initialDust } = useAppSelector((state) => state.dust)
-  console.log(initialDust)
 
   return (
     <div>

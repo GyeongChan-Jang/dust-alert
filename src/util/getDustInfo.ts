@@ -23,7 +23,6 @@ export const getDustInfo = async () => {
     const { data } = await axios.get('/api/B552584/ArpltnInforInqireSvc/getCtprvnRltmMesureDnsty', {
       params: getParameters
     })
-    console.log(data.response.body.items)
     return data.response.body.items
   } catch (error) {
     console.log(error)

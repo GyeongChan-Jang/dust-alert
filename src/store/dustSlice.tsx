@@ -69,17 +69,14 @@ export const dustSlice = createSlice({
         (item) => item.stationName == action.payload
       )
       state.gugunDust = gugunData
-      console.log(gugunData)
-      console.log(state.gugunDust)
     },
     favoriteDustHandler(state, action) {
       const starClickedItem = action.payload
-      console.log(starClickedItem)
+
       state.favoriteDust.push({
         ...starClickedItem,
         isLiked: true
       })
-      console.log(state.favoriteDust)
     },
     favoriteDustRemoveHandler(state, action) {
       let starClickedItem = action.payload
@@ -102,7 +99,6 @@ export const dustSlice = createSlice({
       state.status.loading = false
       state.gugunDust = undefined
       state.initialDust = action.payload?.sidoDustContents[0]
-      console.log(state.sidoDustContents)
     })
     builder.addCase(getDust.rejected, (state, action) => {
       state.status.loading = false

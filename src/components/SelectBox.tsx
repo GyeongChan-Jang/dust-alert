@@ -40,9 +40,7 @@ const SelectBox = () => {
 
   const gugunSelectHandler = (e: string) => {
     setSelectedGugun(e)
-    console.log(e)
     if (currentLocation.pathname === '/myplace') {
-      console.log('위치는 myplace')
       dispatch(myplaceHandler(e))
     }
   }
