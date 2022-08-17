@@ -131,7 +131,7 @@ export const getDust = createAsyncThunk('dust/getDust', async (sido: string) => 
     returnType: 'json',
     pageNo: 1,
     numOfRows: 100,
-    sidoName: '서울',
+    sidoName: sido,
     ver: '1.0'
   }
   try {
