@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import { Listbox, Transition } from '@headlessui/react'
+import { useAppDispatch, useAppSelector } from '../store/store'
+import { getDust, gugunDustHandler } from '../store/dustSlice'
 
 const sidoName = [
-  '전국',
   '서울',
   '부산',
   '대구',
@@ -24,11 +25,28 @@ const sidoName = [
 
 const SelectBox = () => {
   const [selectedSido, setSelectedSido] = useState(sidoName[0])
+  const [selectedGugun, setSelectedGugun] = useState('')
+
+  const dispatch = useAppDispatch()
+  const { sidoDustContents } = useAppSelector((state) => state.dust)
+
+  const sidoSelectHandler = (e: string) => {
+    setSelectedGugun('')
+    console.log(e)
+    setSelectedSido(e)
+    dispatch(getDust(e))
+  }
+
+  const gugunSelectHandler = (e: string) => {
+    setSelectedGugun(e)
+    console.log(e)
+    dispatch(gugunDustHandler(e))
+  }
 
   return (
     <div className="flex items-center justify-center p-6 gap-2">
       <div className="w-full max-w-xs mx-auto">
-        <Listbox as="div" className="space-y-1" value={selectedSido} onChange={setSelectedSido}>
+        <Listbox as="div" className="space-y-1" value={selectedSido} onChange={sidoSelectHandler}>
           {({ open }) => (
             <>
               <Listbox.Label className="block text-sm leading-5 font-bold text-gray-700">
@@ -115,7 +133,7 @@ const SelectBox = () => {
       </div>
 
       <div className="w-full max-w-xs mx-auto">
-        <Listbox as="div" className="space-y-1" value={selectedSido} onChange={setSelectedSido}>
+        <Listbox as="div" className="space-y-1" value={selectedGugun} onChange={gugunSelectHandler}>
           {({ open }) => (
             <>
               <Listbox.Label className="block text-sm leading-5 font-bold text-gray-700">
@@ -124,7 +142,9 @@ const SelectBox = () => {
               <div className="relative">
                 <span className="inline-block w-full rounded-md shadow-sm">
                   <Listbox.Button className="text-black cursor-default relative w-full rounded-md border border-gray-300 bg-white pl-3 pr-10 py-2 text-left focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition ease-in-out duration-150 sm:text-sm sm:leading-5">
-                    <span className="block truncate">{selectedSido}</span>
+                    <span className="block truncate">
+                      {selectedGugun ? selectedGugun : sidoDustContents[0].stationName}
+                    </span>
                     <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
                       <svg
                         className="h-5 w-5 text-gray-400"
@@ -154,8 +174,8 @@ const SelectBox = () => {
                     static
                     className="max-h-60 rounded-md py-1 text-base leading-6 shadow-xs overflow-auto focus:outline-none sm:text-sm sm:leading-5"
                   >
-                    {sidoName.map((sido) => (
-                      <Listbox.Option key={sido} value={sido}>
+                    {sidoDustContents?.map((item: any, index: number) => (
+                      <Listbox.Option key={index} value={item.stationName}>
                         {({ selected, active }) => (
                           <div
                             className={`${
@@ -167,7 +187,7 @@ const SelectBox = () => {
                                 selected ? 'font-semibold' : 'font-normal'
                               } block truncate`}
                             >
-                              {sido}
+                              {item.stationName}
                             </span>
                             {selected && (
                               <span

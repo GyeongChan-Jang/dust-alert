@@ -1,6 +1,15 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import axios from 'axios'
 
+interface GugunType {
+  sidoName: string
+  stationName: string
+  pm10Value: string
+  pm10Grade: string
+  dataTime: string
+  isLiked: null
+}
+
 const initialState = {
   sidoDustContents: [
     {
@@ -8,7 +17,8 @@ const initialState = {
       stationName: '',
       pm10Value: '',
       pm10Grade: '',
-      dataTime: ''
+      dataTime: '',
+      isLiked: null
     }
   ],
   totalCount: 0,
@@ -16,21 +26,33 @@ const initialState = {
     error: '',
     loading: false
   },
-  filteredDust: undefined,
+  gugunDust: undefined,
   favoriteDust: [],
   initialDust: null
 }
 
-export const dustSlice: any = createSlice({
+export const dustSlice = createSlice({
   name: 'dust',
   initialState,
-  reducers: {},
+  reducers: {
+    gugunDustHandler(state, action) {
+      if (!action.payload) return
+      const gugunData: any = state.sidoDustContents.find(
+        (item) => item.stationName == action.payload
+      )
+      state.gugunDust = gugunData
+      // console.log(state.sidoDustContents)
+      console.log(gugunData)
+      console.log(state.gugunDust)
+    }
+  },
   extraReducers: (builder) => {
-    builder.addCase(getDust.fulfilled, (state, { payload }) => {
-      state.sidoDustContents = payload?.sidoDustContents
-      state.totalCount = payload?.totalCount
+    builder.addCase(getDust.fulfilled, (state, action) => {
+      state.sidoDustContents = action.payload?.sidoDustContents
+      state.totalCount = action.payload?.totalCount
       state.status.loading = false
-      console.log(payload)
+      state.gugunDust = undefined
+      console.log(state.sidoDustContents)
     })
     builder.addCase(getDust.rejected, (state, action) => {
       state.status.loading = false
@@ -73,16 +95,15 @@ export const getDust = createAsyncThunk('dust/getDust', async (sido: string) => 
         isLiked: false
       })
     })
-    console.log(dust)
-    const returnObj = {
+
+    return {
       sidoDustContents: dust,
       totalCount: data.length
     }
-
-    return returnObj
   } catch (error) {
     console.log(error)
   }
 })
 
 export const dustReducer = dustSlice.reducer
+export const { gugunDustHandler } = dustSlice.actions

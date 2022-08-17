@@ -18,7 +18,7 @@ const getParameters: GetParams = {
   ver: '1.0'
 }
 
-export const getDust = async () => {
+export const getDustInfo = async () => {
   try {
     const { data } = await axios.get('/api/B552584/ArpltnInforInqireSvc/getCtprvnRltmMesureDnsty', {
       params: getParameters
