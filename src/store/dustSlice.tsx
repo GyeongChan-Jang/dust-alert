@@ -1,16 +1,17 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import axios from 'axios'
 
-interface GugunType {
-  sidoName: string
-  stationName: string
-  pm10Value: string
-  pm10Grade: string
-  dataTime: string
-  isLiked: null
+interface StateType {
+  sidoDustContents: any[]
+  totalCount: number
+  status: {
+    loading: boolean
+    error: string
+  }
+  gugunDust: any
+  favoriteDust: object[]
 }
-
-const initialState = {
+const initialState: StateType = {
   sidoDustContents: [
     {
       sidoName: '',
@@ -27,8 +28,8 @@ const initialState = {
     loading: false
   },
   gugunDust: undefined,
-  favoriteDust: [],
-  initialDust: null
+  favoriteDust: []
+  // initialDust: null
 }
 
 export const dustSlice = createSlice({
@@ -44,6 +45,25 @@ export const dustSlice = createSlice({
       // console.log(state.sidoDustContents)
       console.log(gugunData)
       console.log(state.gugunDust)
+    },
+    favoriteDustHandler(state, action) {
+      const starClickedItem = action.payload
+      console.log(starClickedItem)
+      state.favoriteDust.push({
+        ...starClickedItem,
+        isLiked: true
+      })
+      console.log(state.favoriteDust)
+    },
+    favoriteDustRemoveHandler(state, action) {
+      let starClickedItem = action.payload
+      starClickedItem = {
+        ...starClickedItem,
+        isLiked: false
+      }
+      state.favoriteDust = state.favoriteDust.filter(
+        (item: any) => item.stationName !== starClickedItem.stationName
+      )
     }
   },
   extraReducers: (builder) => {
@@ -106,4 +126,5 @@ export const getDust = createAsyncThunk('dust/getDust', async (sido: string) => 
 })
 
 export const dustReducer = dustSlice.reducer
-export const { gugunDustHandler } = dustSlice.actions
+export const { gugunDustHandler, favoriteDustHandler, favoriteDustRemoveHandler } =
+  dustSlice.actions

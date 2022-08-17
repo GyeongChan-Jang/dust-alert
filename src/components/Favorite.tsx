@@ -1,7 +1,15 @@
 import React from 'react'
+import { useLocation, useParams } from 'react-router-dom'
+import Card from './Card'
 
 const Favorite = () => {
-  return <div>Favorite</div>
+  const FavoriteLocation = useLocation()
+
+  return (
+    <div>
+      <Card FavoriteLocation={FavoriteLocation} />
+    </div>
+  )
 }
 
 export default Favorite

@@ -32,7 +32,6 @@ const SelectBox = () => {
 
   const sidoSelectHandler = (e: string) => {
     setSelectedGugun('')
-    console.log(e)
     setSelectedSido(e)
     dispatch(getDust(e))
   }
