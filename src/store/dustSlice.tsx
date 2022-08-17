@@ -1,6 +1,32 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import axios from 'axios'
 
+interface sidoDustTypes {
+  coFlag: string | null
+  coGrade: string | null
+  coValue: string | null
+  dataTime: string | null
+  khaiGrade: string | null
+  khaiValue: string | null
+  no2Flag: string | null
+  no2Grade: string | null
+  no2Value: string | null
+  o3Flag: string | null
+  o3Grade: string | null
+  o3Value: string | null
+  pm10Flag: string | null
+  pm10Grade: string | null
+  pm10Value: string | null
+  pm25Flag: string | null
+  pm25Grade: string | null
+  pm25Value: string | null
+  sidoName: string | null
+  so2Flag: string | null
+  so2Grade: string | null
+  so2Value: string | null
+  stationName: string | null
+}
+
 interface StateType {
   sidoDustContents: any[]
   totalCount: number
@@ -10,6 +36,7 @@ interface StateType {
   }
   gugunDust: any
   favoriteDust: object[]
+  initialDust: sidoDustTypes | null
 }
 const initialState: StateType = {
   sidoDustContents: [
@@ -28,8 +55,8 @@ const initialState: StateType = {
     loading: false
   },
   gugunDust: undefined,
-  favoriteDust: []
-  // initialDust: null
+  favoriteDust: [],
+  initialDust: null
 }
 
 export const dustSlice = createSlice({
@@ -42,7 +69,6 @@ export const dustSlice = createSlice({
         (item) => item.stationName == action.payload
       )
       state.gugunDust = gugunData
-      // console.log(state.sidoDustContents)
       console.log(gugunData)
       console.log(state.gugunDust)
     },
@@ -64,6 +90,9 @@ export const dustSlice = createSlice({
       state.favoriteDust = state.favoriteDust.filter(
         (item: any) => item.stationName !== starClickedItem.stationName
       )
+    },
+    myplaceHandler(state, action) {
+      state.initialDust = state.sidoDustContents.find((item) => item.stationName == action.payload)
     }
   },
   extraReducers: (builder) => {
@@ -72,6 +101,7 @@ export const dustSlice = createSlice({
       state.totalCount = action.payload?.totalCount
       state.status.loading = false
       state.gugunDust = undefined
+      state.initialDust = action.payload?.sidoDustContents[0]
       console.log(state.sidoDustContents)
     })
     builder.addCase(getDust.rejected, (state, action) => {
@@ -101,7 +131,7 @@ export const getDust = createAsyncThunk('dust/getDust', async (sido: string) => 
     returnType: 'json',
     pageNo: 1,
     numOfRows: 100,
-    sidoName: sido,
+    sidoName: '서울',
     ver: '1.0'
   }
   try {
@@ -126,5 +156,5 @@ export const getDust = createAsyncThunk('dust/getDust', async (sido: string) => 
 })
 
 export const dustReducer = dustSlice.reducer
-export const { gugunDustHandler, favoriteDustHandler, favoriteDustRemoveHandler } =
+export const { gugunDustHandler, favoriteDustHandler, favoriteDustRemoveHandler, myplaceHandler } =
   dustSlice.actions

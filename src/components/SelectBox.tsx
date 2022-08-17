@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { Listbox, Transition } from '@headlessui/react'
 import { useAppDispatch, useAppSelector } from '../store/store'
-import { getDust, gugunDustHandler } from '../store/dustSlice'
+import { getDust, gugunDustHandler, myplaceHandler } from '../store/dustSlice'
+import { useLocation } from 'react-router-dom'
 
 const sidoName = [
   '서울',
@@ -26,6 +27,7 @@ const sidoName = [
 const SelectBox = () => {
   const [selectedSido, setSelectedSido] = useState(sidoName[0])
   const [selectedGugun, setSelectedGugun] = useState('')
+  const myplaceLocation = useLocation()
 
   const dispatch = useAppDispatch()
   const { sidoDustContents } = useAppSelector((state) => state.dust)
@@ -39,7 +41,12 @@ const SelectBox = () => {
   const gugunSelectHandler = (e: string) => {
     setSelectedGugun(e)
     console.log(e)
-    dispatch(gugunDustHandler(e))
+    if (myplaceLocation.pathname === '/myplace') {
+      console.log('위치는 myplace')
+      dispatch(myplaceHandler(e))
+    } else {
+      dispatch(gugunDustHandler(e))
+    }
   }
 
   return (

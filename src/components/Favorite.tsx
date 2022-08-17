@@ -3,11 +3,11 @@ import { useLocation, useParams } from 'react-router-dom'
 import Card from './Card'
 
 const Favorite = () => {
-  const FavoriteLocation = useLocation()
+  const favoriteLocation = useLocation()
 
   return (
     <div>
-      <Card FavoriteLocation={FavoriteLocation} />
+      <Card favoriteLocation={favoriteLocation} />
     </div>
   )
 }

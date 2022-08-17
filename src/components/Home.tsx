@@ -5,15 +5,13 @@ import { useAppDispatch } from '../store/store'
 
 const Home = ({ setIsStarted }: any) => {
   const navigate = useNavigate()
-  const dipatch = useAppDispatch()
+  const dispatch = useAppDispatch()
 
   const startButtonHandler = () => {
+    dispatch(getDust('서울'))
     setIsStarted((prev: any) => !prev)
     navigate('/myplace')
   }
-
-  const data = dipatch(getDust('서울'))
-  console.log(data)
 
   return (
     <div className="bg-center bg-cover bg-no-repeat h-screen items-center justify-center flex flex-col ">
