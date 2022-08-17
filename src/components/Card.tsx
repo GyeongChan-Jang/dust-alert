@@ -55,7 +55,7 @@ const Card = ({ favoriteLocation, myplaceLocation }: any) => {
                   : item.pm10Grade === '5'
                   ? 'bg-rose-500'
                   : 'bg-gray-400'
-              } block p-6 max-w-sm rounded-lg border border-gray-200 shadow-md mb-4`}
+              } block p-6 max-w-sm rounded-lg border border-gray-200 shadow-md mb-4 mx-auto`}
             >
               <h5 className="mb-2 text-2xl tracking-tight text-gray-900 font-bold font-dreams7 flex justify-between">
                 {item.stationName}
@@ -105,7 +105,7 @@ const Card = ({ favoriteLocation, myplaceLocation }: any) => {
                 : gugunDust.pm10Grade === '5'
                 ? 'bg-rose-500'
                 : 'bg-gray-400'
-            } block p-6 max-w-sm rounded-lg border border-gray-200 shadow-md mb-4`}
+            } block p-6 max-w-sm rounded-lg border border-gray-200 shadow-md mb-4 mx-auto`}
           >
             <h5 className="mb-2 text-2xl tracking-tight text-gray-900 font-bold font-dreams7 flex justify-between">
               {gugunDust.stationName}
@@ -157,7 +157,7 @@ const Card = ({ favoriteLocation, myplaceLocation }: any) => {
                   : item.pm10Grade === '5'
                   ? 'bg-rose-500'
                   : 'bg-gray-400'
-              } block p-6 max-w-sm rounded-lg border border-gray-200 shadow-md mb-4`}
+              } block p-6 max-w-sm rounded-lg border border-gray-200 shadow-md mb-4 mx-auto`}
             >
               <h5 className="mb-2 text-2xl tracking-tight text-gray-900 font-bold font-dreams7 flex justify-between">
                 {item.stationName}
@@ -208,7 +208,7 @@ const Card = ({ favoriteLocation, myplaceLocation }: any) => {
                 : initialDust.pm10Grade === '5'
                 ? 'bg-rose-500'
                 : 'bg-gray-400'
-            } block p-6 max-w-sm rounded-lg border border-gray-200 shadow-md mb-4`}
+            } block p-6 max-w-sm rounded-lg border border-gray-200 shadow-md mb-4 mx-auto`}
           >
             <h5 className="mb-2 text-2xl tracking-tight text-gray-900 font-bold font-dreams7 flex justify-between">
               {initialDust.stationName}
