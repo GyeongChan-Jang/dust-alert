@@ -131,12 +131,9 @@ export const getDust = createAsyncThunk('dust/getDust', async (sido: string) => 
     ver: '1.0'
   }
   try {
-    const { data } = await axios.get(
-      'https://apis.data.go.kr/B552584/ArpltnInforInqireSvc/getCtprvnRltmMesureDnsty',
-      {
-        params: getParameters
-      }
-    )
+    const { data } = await axios.get('/api/B552584/ArpltnInforInqireSvc/getCtprvnRltmMesureDnsty', {
+      params: getParameters
+    })
 
     const dust = data.response.body.items.map((item: any) => {
       return (item = {
