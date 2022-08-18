@@ -32,7 +32,7 @@ const Card = ({ favoriteLocation, myplaceLocation }: any) => {
           className="absolute inset-y-1/2 left-1/2 -translate-x-10 -translate-y-10 "
           width={80}
           height={80}
-          src="../../src/assets/loading.gif"
+          src="../../public/images/loading.gif"
         />
       )}
       {/* 전체 시도 보기 */}
