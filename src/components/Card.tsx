@@ -193,7 +193,7 @@ const Card = ({ favoriteLocation, myplaceLocation }: any) => {
         <p className="text-2xl text-gray-700 font-dreams6 text-center">즐겨찾기가 없습니다!</p>
       )}
       {/* 내 지역보기 */}
-      {!status.loading && initialDust && myplaceLocation && (
+      {!status.loading && initialDust && myplaceLocation && !favoriteLocation && (
         <div key={initialDust}>
           <div
             className={`${
