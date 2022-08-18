@@ -21,7 +21,7 @@ const Home = ({ setIsStarted }: any) => {
           className="bg-gray-200 items-center justify-center md:w-1/2 w-full shadow-md p-5 h-auto rounded-lg blur-3 bg-opacity-50 flex flex-col col-span-12"
         >
           <h4 className="w-48 border-t-4 border-solid border-indigo-500 h-10"></h4>
-          <img width={40} height={40} src="../../src/assets/dust.png" alt="dust" />
+          <img width={40} height={40} src="../../public/images/dust.png" alt="dust" />
           <h4 className="text-blue-800 font-dreams8 text-2xl mt-6">먼지 이놈!</h4>
           <h2 className="text-black text-xl text-center mt-2 mb-20">
             전국 미세먼지 상황을 알려주는 알리미입니다.
