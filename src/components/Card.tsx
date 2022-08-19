@@ -33,7 +33,7 @@ const Card = ({ favoriteLocation, myplaceLocation }: any) => {
           width={80}
           height={80}
           // https://user-images.githubusercontent.com/90392240/185378405-044634ca-d68d-4a5f-a134-e528f2877982.gif
-          src="/public/loading.gif"
+          src="/loading.gif"
         />
       )}
       {/* 전체 시도 보기 */}

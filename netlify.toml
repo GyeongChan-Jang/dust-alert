@@ -2,8 +2,3 @@
 from = '/api/*'
 to = 'http://apis.data.go.kr'
 status = 200
-
-[dev]
-  command = "npm run dev"
-  port = 5173
-  publish = "dist"
