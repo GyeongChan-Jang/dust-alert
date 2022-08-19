@@ -32,7 +32,8 @@ const Card = ({ favoriteLocation, myplaceLocation }: any) => {
           className="absolute inset-y-1/2 left-1/2 -translate-x-10 -translate-y-10 "
           width={80}
           height={80}
-          src="https://user-images.githubusercontent.com/90392240/185378405-044634ca-d68d-4a5f-a134-e528f2877982.gif"
+          // https://user-images.githubusercontent.com/90392240/185378405-044634ca-d68d-4a5f-a134-e528f2877982.gif
+          src="/public/assets/loading.gif"
         />
       )}
       {/* 전체 시도 보기 */}

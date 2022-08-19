@@ -24,7 +24,8 @@ const Home = ({ setIsStarted }: any) => {
           <img
             width={40}
             height={40}
-            src="https://user-images.githubusercontent.com/90392240/185337126-a27ff4eb-f459-4f37-bea2-2d09cc479ddc.png"
+            // https://user-images.githubusercontent.com/90392240/185337126-a27ff4eb-f459-4f37-bea2-2d09cc479ddc.png
+            src="/public/assets/dust.png"
             alt="dust"
           />
           <h4 className="text-blue-800 font-dreams8 text-2xl mt-6">먼지 이놈!</h4>
