@@ -4,23 +4,10 @@
 
 `모바일 디스플레이 사이즈 기준으로 제작했습니다.`
 
-## 기술 스택
+## ✍️ 사용 기술
+<img src="https://img.shields.io/badge/JAVASCRIPT-F7DF1E?style=for-the-badge&logo=JavaScript&logoColor=white"/> <img src="https://img.shields.io/badge/REDUX TOOLKIT-764ABC?style=for-the-badge&logo=Redux&logoColor=white"/> <img src="https://img.shields.io/badge/REDUX THUNK-764ABC?style=for-the-badge&logo=Redux&logoColor=white"/> <img src="https://img.shields.io/badge/TAILWIND CSS-06B6D4?style=for-the-badge&logo=Tailwind CSS&logoColor=white"/> <img src="https://img.shields.io/badge/HEADLESS UI-66E3FF?style=for-the-badge&logo=Headless UI&logoColor=white"/> <img src="https://img.shields.io/badge/VERCEL-000000?style=for-the-badge&logo=Vercel&logoColor=white"/>
 
-> **개발 언어**
-
-- TypeScript
-
-> **상태 관리**
-
-- Redux Toolkit
-- Redux Thunk
-
-> **스타일링**
-
-- Tailwind CSS
-- headlessui
-
-## 기능
+## 🕹 기능
 
 **1. 시도 구군명 검색**
 
@@ -37,3 +24,5 @@
 **4. 즐겨찾기 기능**
 
 - 즐겨찾기 해놓은 지역들의 미세먼지 정보만 제공합니다.
+
+## 📚 구조 
