@@ -1,5 +1,10 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import axios from 'axios'
+import qs from 'qs'
+
+axios.defaults.paramsSerializer = (params) => {
+  return qs.stringify(params, { encode: false })
+}
 
 interface sidoDustTypes {
   coFlag: string | null
